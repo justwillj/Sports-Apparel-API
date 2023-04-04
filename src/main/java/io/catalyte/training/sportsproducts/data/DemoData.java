@@ -1,5 +1,7 @@
 package io.catalyte.training.sportsproducts.data;
 
+import io.catalyte.training.sportsproducts.domains.advert.Advert;
+import io.catalyte.training.sportsproducts.domains.advert.AdvertRepository;
 import io.catalyte.training.sportsproducts.domains.product.Product;
 import io.catalyte.training.sportsproducts.domains.product.ProductRepository;
 import io.catalyte.training.sportsproducts.domains.purchase.BillingAddress;
@@ -33,6 +35,9 @@ public class DemoData implements CommandLineRunner {
 
   @Autowired
   private PurchaseRepository purchaseRepository;
+
+  @Autowired
+  private AdvertRepository advertRepository;
 
   @Autowired
   private Environment env;
@@ -101,6 +106,24 @@ public class DemoData implements CommandLineRunner {
     purchase4.setBillingAddress(billingAddress);
 
     purchaseRepository.save(purchase4);
+
+    Advert advert1 = new Advert();
+    advert1.setName("Soccer Cleats");
+    advert1.setImageURL("https://images.pexels.com/photos/3684122/pexels-photo-3684122.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+    advert1.setDiscount(35);
+    advertRepository.save(advert1);
+
+    Advert advert2 = new Advert();
+    advert2.setName("Weightlifting Gear");
+    advert2.setImageURL("https://images.pexels.com/photos/371049/pexels-photo-371049.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+    advert2.setDiscount(15);
+    advertRepository.save(advert2);
+
+    Advert advert3 = new Advert();
+    advert3.setName("Running Shoes");
+    advert3.setImageURL("https://images.pexels.com/photos/34514/spot-runs-start-la.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+    advert3.setDiscount(25);
+    advertRepository.save(advert3);
 
   }
 
