@@ -30,6 +30,12 @@ public class ProductFactory {
       "#f092b0", // pink
       "#b7c0c7"  // light gray
   };
+  private static final String[] names = {
+          "Retro",
+          "Professional Athlete Franchise",
+          "Bland",
+          "Good Gear"
+  };
   private static final String[] demographics = {
       "Men",
       "Women",
@@ -89,11 +95,22 @@ public class ProductFactory {
    *
    * @return - a demographic string
    */
+  public static String getNames() {
+    Random randomGenerator = new Random();
+    return names[randomGenerator.nextInt(names.length)];
+  }
   public static String getDemographic() {
     Random randomGenerator = new Random();
     return demographics[randomGenerator.nextInt(demographics.length)];
   }
-
+  public static String getCategories() {
+    Random randomGenerator = new Random();
+    return categories[randomGenerator.nextInt(categories.length)];
+  }
+  public static String getTypes() {
+    Random randomGenerator = new Random();
+    return types[randomGenerator.nextInt(types.length)];
+  }
   /**
    * Generates a random product offering id.
    *
@@ -155,9 +172,15 @@ public class ProductFactory {
   public Product createRandomProduct() {
     Product product = new Product();
     String demographic = ProductFactory.getDemographic();
-    product.setCategory("Running");
-    product.setType("Short");
+    String category = ProductFactory.getCategories();
+    String type = ProductFactory.getTypes();
+    String name = ProductFactory.getNames();
+//    product.setCategory("Running");
+//    product.setType("Short");
 
+    product.setName(name);
+    product.setType(type);
+    product.setCategory(category);
     product.setDemographic(demographic);
     product.setGlobalProductCode(ProductFactory.getRandomProductId());
     product.setStyleNumber(ProductFactory.getStyleCode());
