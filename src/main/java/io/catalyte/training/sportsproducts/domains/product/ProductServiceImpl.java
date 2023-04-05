@@ -2,6 +2,8 @@ package io.catalyte.training.sportsproducts.domains.product;
 
 import io.catalyte.training.sportsproducts.exceptions.ResourceNotFound;
 import io.catalyte.training.sportsproducts.exceptions.ServerError;
+
+import java.util.ArrayList;
 import java.util.List;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -32,6 +34,7 @@ public class ProductServiceImpl implements ProductService {
    * @return - a list of products matching the example, or all products if no example was passed
    */
   public List<Product> getProducts(Product product) {
+
     try {
       return productRepository.findAll(Example.of(product));
     } catch (DataAccessException e) {
@@ -62,5 +65,50 @@ public class ProductServiceImpl implements ProductService {
       logger.info("Get by id failed, it does not exist in the database: " + id);
       throw new ResourceNotFound("Get by id failed, it does not exist in the database: " + id);
     }
+  }
+
+  /**
+   * Counts the number of matching products in repository
+   * @param product - example product from get request
+   * @return Long - count of matching products
+   */
+    @Override
+    public Long countProducts(Product product) {
+       logger.info("Counting matches...");
+       try {
+         return productRepository.count(Example.of(product));
+       } catch (DataAccessException e) {
+         logger.error(e.getMessage());
+         throw new ServerError(e.getMessage());
+       }
+    }
+
+  /**
+   * Returns a page of matching products
+   * @param product - example product from get request
+   * @param startIndex - where to start getting products from repository
+   * @return
+   */
+  @Override
+  public List<Product> getProductPage(Product product, int startIndex) {
+      Long count = countProducts(product);
+      int stopIndex;
+      List<Product> matchingProducts = new ArrayList<>();
+      List<Product> productPage = new ArrayList<>();
+
+      //set stopIndex to get at most 20 products per page
+      if(count.intValue() - startIndex > 20) {
+        stopIndex = startIndex + 20;
+      } else {
+        stopIndex = startIndex + (count.intValue() - startIndex);
+      }
+
+      try {
+        logger.info("trying...");
+        return getProducts(product).subList(startIndex,stopIndex);
+      } catch (DataAccessException e) {
+        logger.error(e.getMessage());
+        throw new ServerError(e.getMessage());
+      }
   }
 }
