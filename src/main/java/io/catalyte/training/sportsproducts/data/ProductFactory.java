@@ -41,6 +41,11 @@ public class ProductFactory {
       "Women",
       "Kids"
   };
+  private static final String[] description = {
+          "Wow, dries fast",
+          "Stylish, yet versatile",
+          "Kids Love this item!"
+  };
   private static final String[] categories = {
       "Golf",
       "Soccer",
@@ -102,6 +107,10 @@ public class ProductFactory {
   public static String getDemographic() {
     Random randomGenerator = new Random();
     return demographics[randomGenerator.nextInt(demographics.length)];
+  }
+  public static String getDescription() {
+    Random randomGenerator = new Random();
+    return description[randomGenerator.nextInt(description.length)];
   }
   public static String getCategories() {
     Random randomGenerator = new Random();
@@ -172,6 +181,7 @@ public class ProductFactory {
   public Product createRandomProduct() {
     Product product = new Product();
     String demographic = ProductFactory.getDemographic();
+    String description = ProductFactory.getDescription();
     String category = ProductFactory.getCategories();
     String type = ProductFactory.getTypes();
     String name = ProductFactory.getNames();
@@ -182,6 +192,7 @@ public class ProductFactory {
     product.setType(type);
     product.setCategory(category);
     product.setDemographic(demographic);
+    product.setDescription(description);
     product.setGlobalProductCode(ProductFactory.getRandomProductId());
     product.setStyleNumber(ProductFactory.getStyleCode());
 
