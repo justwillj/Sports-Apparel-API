@@ -3,6 +3,8 @@ package io.catalyte.training.sportsproducts.domains.product;
 import static io.catalyte.training.sportsproducts.constants.Paths.PRODUCTS_PATH;
 
 import java.util.List;
+import java.util.Optional;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,9 +54,16 @@ public class ProductController {
 
   @GetMapping("/productPage")
   @ResponseStatus(HttpStatus.OK)
-  public ResponseEntity<List<Product>> getProductPage(Product product,@RequestBody int startIndex) {
+  public ResponseEntity<List<Product>> getProductPage(@RequestParam (required = false) Product product, @RequestParam int startIndex) {
     logger.info("Request received for product page");
 
     return new ResponseEntity<>(productService.getProductPage(product, startIndex), HttpStatus.OK);
   }
+//  @GetMapping("/productPage")
+//  @ResponseStatus(HttpStatus.OK)
+//  public ResponseEntity<List<Product>> getProductPage(Product product) {
+//    logger.info("Request received for product page");
+//
+//    return new ResponseEntity<>(productService.getProductPage(product), HttpStatus.OK);
+//  }
 }

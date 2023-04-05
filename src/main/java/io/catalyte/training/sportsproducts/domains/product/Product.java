@@ -37,6 +37,7 @@ public class Product {
 
   private Boolean active;
 
+  private String startIndex;
   public Product() {
   }
 
@@ -145,6 +146,14 @@ public class Product {
 
   public void setActive(Boolean active) {
     this.active = active;
+  }
+
+  public String getStartIndex() {
+    return startIndex;
+  }
+
+  public void setStartIndex(String startIndex) {
+    this.startIndex = startIndex;
   }
 
   @Override

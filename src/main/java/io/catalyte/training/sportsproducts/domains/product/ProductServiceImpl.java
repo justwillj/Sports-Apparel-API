@@ -34,7 +34,7 @@ public class ProductServiceImpl implements ProductService {
    * @return - a list of products matching the example, or all products if no example was passed
    */
   public List<Product> getProducts(Product product) {
-
+    logger.info("get all the things");
     try {
       return productRepository.findAll(Example.of(product));
     } catch (DataAccessException e) {
@@ -86,12 +86,15 @@ public class ProductServiceImpl implements ProductService {
   /**
    * Returns a page of matching products
    * @param product - example product from get request
-   * @param startIndex - where to start getting products from repository
    * @return
    */
   @Override
   public List<Product> getProductPage(Product product, int startIndex) {
+//  public List<Product> getProductPage(Product product) {
       Long count = countProducts(product);
+//      int startIndex = Integer.parseInt(product.getStartIndex());
+//      logger.info(startIndex);
+//      product.setStartIndex(null);
       int stopIndex;
       List<Product> matchingProducts = new ArrayList<>();
       List<Product> productPage = new ArrayList<>();
@@ -104,7 +107,7 @@ public class ProductServiceImpl implements ProductService {
       }
 
       try {
-        logger.info("trying...");
+        logger.info("Building Product Page...");
         return getProducts(product).subList(startIndex,stopIndex);
       } catch (DataAccessException e) {
         logger.error(e.getMessage());
