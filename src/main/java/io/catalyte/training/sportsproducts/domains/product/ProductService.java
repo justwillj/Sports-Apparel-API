@@ -14,5 +14,5 @@ public interface ProductService {
   Long countProducts(Product product);
 
 //  List<Product> getProductPage(Product product);
-  List<Product> getProductPage(Product product, int startIndex);
+  List<Product> getProductPage(Product product, Long start);
 }

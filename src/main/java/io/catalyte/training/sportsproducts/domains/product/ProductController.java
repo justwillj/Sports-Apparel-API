@@ -52,12 +52,17 @@ public class ProductController {
     return new ResponseEntity<>(productService.countProducts(product), HttpStatus.OK);
   }
 
-  @GetMapping("/productPage")
+  @GetMapping("/productPage/{start}")
   @ResponseStatus(HttpStatus.OK)
-  public ResponseEntity<List<Product>> getProductPage(@RequestParam (required = false) Product product, @RequestParam int startIndex) {
+  public ResponseEntity<List<Product>> getProductPage(@PathVariable("start") Long start, Product product) {
+//  public ResponseEntity<List<Product>> getProductPage(@RequestParam (required = false) Product product, @RequestParam int startIndex) {
     logger.info("Request received for product page");
 
-    return new ResponseEntity<>(productService.getProductPage(product, startIndex), HttpStatus.OK);
+    if(!(product != null)) {
+      product = new Product();
+      logger.info(product);
+    }
+    return new ResponseEntity<>(productService.getProductPage(product, start), HttpStatus.OK);
   }
 //  @GetMapping("/productPage")
 //  @ResponseStatus(HttpStatus.OK)

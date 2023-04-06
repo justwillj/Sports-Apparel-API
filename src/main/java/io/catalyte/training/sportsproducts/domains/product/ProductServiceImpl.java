@@ -35,6 +35,7 @@ public class ProductServiceImpl implements ProductService {
    */
   public List<Product> getProducts(Product product) {
     logger.info("get all the things");
+    logger.info(product);
     try {
       return productRepository.findAll(Example.of(product));
     } catch (DataAccessException e) {
@@ -89,26 +90,27 @@ public class ProductServiceImpl implements ProductService {
    * @return
    */
   @Override
-  public List<Product> getProductPage(Product product, int startIndex) {
+  public List<Product> getProductPage(Product product, Long start) {
 //  public List<Product> getProductPage(Product product) {
       Long count = countProducts(product);
-//      int startIndex = Integer.parseInt(product.getStartIndex());
-//      logger.info(startIndex);
+      int startIndexInt = start.intValue();
+//      int startIndexInt = Integer.parseInt(startIndex);
+      logger.info(startIndexInt);
 //      product.setStartIndex(null);
       int stopIndex;
       List<Product> matchingProducts = new ArrayList<>();
       List<Product> productPage = new ArrayList<>();
 
       //set stopIndex to get at most 20 products per page
-      if(count.intValue() - startIndex > 20) {
-        stopIndex = startIndex + 20;
+      if(count.intValue() - startIndexInt > 20) {
+        stopIndex = startIndexInt + 20;
       } else {
-        stopIndex = startIndex + (count.intValue() - startIndex);
+        stopIndex = startIndexInt + (count.intValue() - startIndexInt);
       }
 
       try {
         logger.info("Building Product Page...");
-        return getProducts(product).subList(startIndex,stopIndex);
+        return getProducts(product).subList(startIndexInt,stopIndex);
       } catch (DataAccessException e) {
         logger.error(e.getMessage());
         throw new ServerError(e.getMessage());
