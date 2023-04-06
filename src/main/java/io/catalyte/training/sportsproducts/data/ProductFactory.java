@@ -42,9 +42,9 @@ public class ProductFactory {
       "Kids"
   };
   private static final String[] description = {
-          "Wow, dries fast",
-          "Stylish, yet versatile",
-          "Kids Love this item!"
+          "Moisture wicking technology",
+          "Stylish, yet rugged and versatile",
+          "Extra durable construction"
   };
   private static final String[] categories = {
       "Golf",
