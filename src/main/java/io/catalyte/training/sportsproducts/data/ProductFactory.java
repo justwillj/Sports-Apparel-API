@@ -39,7 +39,8 @@ public class ProductFactory {
   private static final String[] demographics = {
       "Men",
       "Women",
-      "Kids"
+      "Kids",
+      "Pets"
   };
   private static final String[] categories = {
       "Golf",
@@ -90,6 +91,12 @@ public class ProductFactory {
       "Pool Noodle"
   };
 
+  private static final String[] breed = {
+      "Dog",
+      "Cat",
+      "Other"
+  };
+
   /**
    * Returns a random demographic from the list of demographics.
    *
@@ -110,6 +117,10 @@ public class ProductFactory {
   public static String getTypes() {
     Random randomGenerator = new Random();
     return types[randomGenerator.nextInt(types.length)];
+  }
+  public static String getBreed() {
+    Random randomGenerator = new Random();
+    return categories[randomGenerator.nextInt(breed.length)];
   }
   /**
    * Generates a random product offering id.
