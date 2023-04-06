@@ -34,8 +34,7 @@ public class ProductServiceImpl implements ProductService {
    * @return - a list of products matching the example, or all products if no example was passed
    */
   public List<Product> getProducts(Product product) {
-    logger.info("get all the things");
-    logger.info(product);
+
     try {
       return productRepository.findAll(Example.of(product));
     } catch (DataAccessException e) {
@@ -70,7 +69,7 @@ public class ProductServiceImpl implements ProductService {
 
   /**
    * Counts the number of matching products in repository
-   * @param product - example product from get request
+   * @param product - example product from get request, used to filter results
    * @return Long - count of matching products
    */
     @Override
@@ -86,17 +85,14 @@ public class ProductServiceImpl implements ProductService {
 
   /**
    * Returns a page of matching products
-   * @param product - example product from get request
+   * @param start - start index of what products to return
+   * @param product - example product from get request, used to filter results
    * @return
    */
   @Override
   public List<Product> getProductPage(Product product, Long start) {
-//  public List<Product> getProductPage(Product product) {
       Long count = countProducts(product);
       int startIndexInt = start.intValue();
-//      int startIndexInt = Integer.parseInt(startIndex);
-      logger.info(startIndexInt);
-//      product.setStartIndex(null);
       int stopIndex;
       List<Product> matchingProducts = new ArrayList<>();
       List<Product> productPage = new ArrayList<>();

@@ -52,23 +52,21 @@ public class ProductController {
     return new ResponseEntity<>(productService.countProducts(product), HttpStatus.OK);
   }
 
+  /**
+   * This get returns a List of at most 20 products
+   * @param start - startIndex to determine where to start getting products
+   * @param product - example product to filter return List
+   * @return List<Product> - List of at most 20 filtered products
+   */
   @GetMapping("/productPage/{start}")
   @ResponseStatus(HttpStatus.OK)
   public ResponseEntity<List<Product>> getProductPage(@PathVariable("start") Long start, Product product) {
-//  public ResponseEntity<List<Product>> getProductPage(@RequestParam (required = false) Product product, @RequestParam int startIndex) {
     logger.info("Request received for product page");
 
+    //sets up empty product for empty query
     if(!(product != null)) {
       product = new Product();
-      logger.info(product);
     }
     return new ResponseEntity<>(productService.getProductPage(product, start), HttpStatus.OK);
   }
-//  @GetMapping("/productPage")
-//  @ResponseStatus(HttpStatus.OK)
-//  public ResponseEntity<List<Product>> getProductPage(Product product) {
-//    logger.info("Request received for product page");
-//
-//    return new ResponseEntity<>(productService.getProductPage(product), HttpStatus.OK);
-//  }
 }
