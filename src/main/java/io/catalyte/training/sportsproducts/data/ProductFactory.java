@@ -120,7 +120,7 @@ public class ProductFactory {
   }
   public static String getBreed() {
     Random randomGenerator = new Random();
-    return categories[randomGenerator.nextInt(breed.length)];
+    return breed[randomGenerator.nextInt(breed.length)];
   }
   /**
    * Generates a random product offering id.
