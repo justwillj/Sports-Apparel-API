@@ -10,4 +10,8 @@ public interface ProductService {
   List<Product> getProducts(Product product);
 
   Product getProductById(Long id);
+
+  Long countProducts(Product product);
+
+  List<Product> getProductPage(Product product, Long start);
 }
