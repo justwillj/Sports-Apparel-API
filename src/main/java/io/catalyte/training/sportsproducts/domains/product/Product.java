@@ -25,6 +25,8 @@ public class Product {
 
   private String type;
 
+  private String breed;
+
   private String releaseDate;
 
   private String primaryColorCode;
@@ -46,6 +48,7 @@ public class Product {
     this.name = name;
     this.description = description;
     this.demographic = demographic;
+    this.breed = breed;
     this.category = category;
     this.type = type;
     this.releaseDate = releaseDate;
@@ -147,6 +150,14 @@ public class Product {
     this.active = active;
   }
 
+  public String getBreed() {
+    return breed;
+  }
+
+  public void setBreed(String breed) {
+    this.breed = breed;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -195,6 +206,9 @@ public class Product {
         : product.globalProductCode != null) {
       return false;
     }
+    if (breed != null ? !breed.equals(product.breed) : product.breed != null) {
+      return false;
+    }
     return active != null ? active.equals(product.active) : product.active == null;
   }
 
@@ -211,24 +225,26 @@ public class Product {
     result = 31 * result + (styleNumber != null ? styleNumber.hashCode() : 0);
     result = 31 * result + (globalProductCode != null ? globalProductCode.hashCode() : 0);
     result = 31 * result + (active != null ? active.hashCode() : 0);
+    result = 31 * result + (breed != null ? breed.hashCode() : 0)
     return result;
   }
 
   @Override
   public String toString() {
     return "Product{" +
-        "id=" + id +
-        ", name='" + name + '\'' +
-        ", description='" + description + '\'' +
-        ", demographic='" + demographic + '\'' +
-        ", category='" + category + '\'' +
-        ", type='" + type + '\'' +
-        ", releaseDate='" + releaseDate + '\'' +
-        ", primaryColorCode='" + primaryColorCode + '\'' +
-        ", secondaryColorCode='" + secondaryColorCode + '\'' +
-        ", styleNumber='" + styleNumber + '\'' +
-        ", globalProductCode='" + globalProductCode + '\'' +
-        ", active='" + active + '\'' +
-        '}';
+            "id=" + id +
+            ", name='" + name + '\'' +
+            ", description='" + description + '\'' +
+            ", demographic='" + demographic + '\'' +
+            ", category='" + category + '\'' +
+            ", type='" + type + '\'' +
+            ", breed='" + breed + '\'' +
+            ", releaseDate='" + releaseDate + '\'' +
+            ", primaryColorCode='" + primaryColorCode + '\'' +
+            ", secondaryColorCode='" + secondaryColorCode + '\'' +
+            ", styleNumber='" + styleNumber + '\'' +
+            ", globalProductCode='" + globalProductCode + '\'' +
+            ", active=" + active +
+            '}';
   }
 }
