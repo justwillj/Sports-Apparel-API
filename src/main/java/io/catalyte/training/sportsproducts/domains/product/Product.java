@@ -225,7 +225,7 @@ public class Product {
     result = 31 * result + (styleNumber != null ? styleNumber.hashCode() : 0);
     result = 31 * result + (globalProductCode != null ? globalProductCode.hashCode() : 0);
     result = 31 * result + (active != null ? active.hashCode() : 0);
-    result = 31 * result + (breed != null ? breed.hashCode() : 0)
+    result = 31 * result + (breed != null ? breed.hashCode() : 0);
     return result;
   }
 
