@@ -2,10 +2,10 @@ package io.catalyte.training.sportsproducts.data;
 
 import io.catalyte.training.sportsproducts.domains.product.Product;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.function.Predicate;
+
 import org.apache.commons.lang3.RandomStringUtils;
 
 /**
@@ -57,7 +57,26 @@ public class ProductFactory {
       "Baseball",
       "Skateboarding",
       "Boxing",
+      "Weightlifting",
+      "Swimming",
+      "Pet"
+  };
+  private  static  final String[] teamSportCategories = {
+      "Golf",
+      "Soccer",
+      "Basketball",
+      "Hockey",
+      "Football",
+      "Baseball"
+  };
+  private static final String[] soloSportCategories = {
+      "Running",
+      "Skateboarding",
+      "Boxing",
       "Weightlifting"
+  };
+  private static final String[] recreation = {
+      "Swimming"
   };
   private static final String[] adjectives = {
       "Lightweight",
@@ -93,9 +112,37 @@ public class ProductFactory {
       "Wristband",
       "Hoodie",
       "Flip Flop",
-      "Pool Noodle"
+      "Pool Noodle",
+      "Squeak-toy",
+      "Bed"
   };
+  private static final String[] clothing = {
+          "Pant",
+          "Short",
+          "Jacket",
+          "Tank Top",
+          "Sock",
+          "Hoodie",
+          "Shoe",
+          "Belt",
+          "Visor"
+  };
+  private static final String[] accessories = {
+          "Hat",
+          "Headband",
+          "Wristband",
+          "Glove",
+          "Sunglasses",
 
+  };
+  private static final String[] outdoorWear = {
+          "Flip Flop",
+          "Pool Noodle"
+  };
+  private static final String[] forPets = {
+          "Squeak-toy",
+          "Bed"
+  };
   private static final String[] breed = {
       "Dog",
       "Cat",
@@ -115,6 +162,16 @@ public class ProductFactory {
     Random randomGenerator = new Random();
     return demographics[randomGenerator.nextInt(demographics.length)];
   }
+  public static String getRecreation() {
+    Random randomGenerator = new Random();
+    return recreation[randomGenerator.nextInt(recreation.length)];
+  }
+//  public static String getPet() {
+//    Random randomGenerator = new Random();
+//    Predicate<String> isPet = Predicate.isEqual("Pets");
+//    List<String> pet = new ArrayList<>((Collection) Arrays.stream(demographics).filter(isPet));
+//    return pet.get(0);
+//  }
   public static String getDescription() {
     Random randomGenerator = new Random();
     return description[randomGenerator.nextInt(description.length)];
@@ -130,6 +187,30 @@ public class ProductFactory {
   public static String getBreed() {
     Random randomGenerator = new Random();
     return breed[randomGenerator.nextInt(breed.length)];
+  }
+  public static String getForPets() {
+    Random randomGenerator = new Random();
+    return forPets[randomGenerator.nextInt(forPets.length)];
+  }
+  public static String getTeamSportCategories() {
+    Random randomGenerator = new Random();
+    return teamSportCategories[randomGenerator.nextInt(teamSportCategories.length)];
+  }
+  public static String getSoloSportCategories() {
+    Random randomGenerator = new Random();
+    return soloSportCategories[randomGenerator.nextInt(soloSportCategories.length)];
+  }
+  public static String getClothing() {
+    Random randomGenerator = new Random();
+    return clothing[randomGenerator.nextInt(clothing.length)];
+  }
+  public static String getAccessories() {
+    Random randomGenerator = new Random();
+    return accessories[randomGenerator.nextInt(accessories.length)];
+  }
+  public static String getOutdoorWear() {
+    Random randomGenerator = new Random();
+    return outdoorWear[randomGenerator.nextInt(outdoorWear.length)];
   }
   /**
    * Generates a random product offering id.
@@ -189,6 +270,15 @@ public class ProductFactory {
    *
    * @return - a randomly generated product
    */
+  Boolean filterProduct(String a, String[] b) {
+   Predicate<String> isA = Predicate.isEqual(a);
+   Boolean isMatch = Arrays.stream(b).anyMatch(isA);
+   return isMatch;
+  }
+  double oddOrEven() {
+    double isEven = Math.round(Math.random());
+    return isEven;
+  }
   public Product createRandomProduct() {
     Product product = new Product();
     String demographic = ProductFactory.getDemographic();
@@ -196,16 +286,61 @@ public class ProductFactory {
     String category = ProductFactory.getCategories();
     String type = ProductFactory.getTypes();
     String name = ProductFactory.getNames();
+    String breed = ProductFactory.getBreed();
+    String teamSport = ProductFactory.getTeamSportCategories();
+    String soloSport = ProductFactory.getSoloSportCategories();
+    String recreate = ProductFactory.getRecreation();
+    String cloths = ProductFactory.getClothing();
+    String accessory = ProductFactory.getAccessories();
+    String outdoor = ProductFactory.getOutdoorWear();
+    String pet = ProductFactory.getForPets();
 //    product.setCategory("Running");
 //    product.setType("Short");
-
     product.setName(name);
-    product.setType(type);
-    product.setCategory(category);
-    product.setDemographic(demographic);
-    product.setDescription(description);
-    product.setGlobalProductCode(ProductFactory.getRandomProductId());
-    product.setStyleNumber(ProductFactory.getStyleCode());
+    if (demographic != "Pets") {
+      if(filterProduct(category, teamSportCategories)) {
+        product.setCategory(teamSport);
+        product.setType(cloths);
+        product.setDemographic(demographic);
+        product.setDescription(description);
+        product.setGlobalProductCode(ProductFactory.getRandomProductId());
+        product.setStyleNumber(ProductFactory.getStyleCode());
+      }
+      if (filterProduct(category, soloSportCategories)) {
+        if(oddOrEven()%2 != 0) {
+          product.setType(cloths);
+        } else {
+          product.setType(accessory);
+        }
+        product.setCategory(soloSport);
+        product.setDemographic(demographic);
+        product.setDescription(description);
+        product.setGlobalProductCode(ProductFactory.getRandomProductId());
+        product.setStyleNumber(ProductFactory.getStyleCode());
+      }
+      if (filterProduct(category, recreation)) {
+        product.setCategory(recreate);
+        product.setType(outdoor);
+        product.setDemographic(demographic);
+        product.setDescription(description);
+        product.setGlobalProductCode(ProductFactory.getRandomProductId());
+        product.setStyleNumber(ProductFactory.getStyleCode());
+      }
+    }else{
+      product.setDemographic(demographic);
+      product.setCategory("Pet");
+      product.setType(pet);
+      product.setDescription(description);
+      product.setGlobalProductCode(ProductFactory.getRandomProductId());
+      product.setStyleNumber(ProductFactory.getStyleCode());
+    }
+//    product.setType(type);
+//    product.setCategory(category);
+//    product.setDemographic(demographic);
+//    product.setDescription(description);
+//    product.setGlobalProductCode(ProductFactory.getRandomProductId());
+//    product.setStyleNumber(ProductFactory.getStyleCode());
+//    product.setBreed(breed);
 
     return product;
   }
