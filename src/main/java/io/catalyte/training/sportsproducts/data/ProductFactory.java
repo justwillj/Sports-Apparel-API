@@ -61,22 +61,35 @@ public class ProductFactory {
       "Swimming",
       "Pet"
   };
-  private  static  final String[] teamSportCategories = {
+  private  static  final String[] nonPaddedSportCategories = {
       "Golf",
-      "Soccer",
-      "Basketball",
-      "Hockey",
-      "Football",
-      "Baseball"
-  };
-  private static final String[] soloSportCategories = {
-      "Running",
-      "Skateboarding",
+      "Baseball",
       "Boxing",
-      "Weightlifting"
+
   };
-  private static final String[] recreation = {
+  private static final String[] weightliftingSport= {
+      "Weightlifting",
+  };
+  private static final String[] runningSport = {
+          "Running"
+  };
+  private  static  final String[] paddedSportCategories = {
+          "Hockey",
+          "Football",
+          "Skateboarding",
+  };
+  private static final String[] footSports = {
+          "Soccer",
+  };
+  private static final String[] handSports = {
+          "Basketball",
+  };
+
+  private static final String[] water = {
       "Swimming"
+  };
+  private static final String[] petDept = {
+          "Pet"
   };
   private static final String[] adjectives = {
       "Lightweight",
@@ -116,26 +129,57 @@ public class ProductFactory {
       "Squeak-toy",
       "Bed"
   };
-  private static final String[] clothing = {
+  private static final String[] contactApparel = {
           "Pant",
           "Short",
-          "Jacket",
+          "Sock",
+          "Shoe",
+          "Helmet",
+          "Shin Guard",
+          "Elbow Pad",
+  };
+  private static final String[] soloApparel = {
+          "Glove",
+          "Shoe",
+          "Sock",
+          "Hat",
+  };
+  private static final String[] weightliftingApparel = {
+          "Glove",
+          "Belt",
+          "Shoe",
           "Tank Top",
           "Sock",
-          "Hoodie",
-          "Shoe",
-          "Belt",
-          "Visor"
   };
-  private static final String[] accessories = {
-          "Hat",
+  private static final String[] runningApparel = {
+          "Jacket",
+          "Sunglasses",
           "Headband",
           "Wristband",
-          "Glove",
-          "Sunglasses",
-
+          "Shoe",
+          "Tank Top",
+          "Sock",
+          "Short",
+          "Hoodie",
+          "Visor",
   };
-  private static final String[] outdoorWear = {
+  private static final String[] basketballApparel = {
+          "Headband",
+          "Wristband",
+          "Shoe",
+          "Tank Top",
+          "Sock",
+          "Short",
+  };
+  private static final String[] soccerApparel = {
+          "Headband",
+          "Wristband",
+          "Short",
+          "Sock",
+          "Shoe",
+          "Shin Guard",
+  };
+  private static final String[] swimWear = {
           "Flip Flop",
           "Pool Noodle"
   };
@@ -162,9 +206,9 @@ public class ProductFactory {
     Random randomGenerator = new Random();
     return demographics[randomGenerator.nextInt(demographics.length)];
   }
-  public static String getRecreation() {
+  public static String getNonPaddedSportCategories() {
     Random randomGenerator = new Random();
-    return recreation[randomGenerator.nextInt(recreation.length)];
+    return nonPaddedSportCategories[randomGenerator.nextInt(nonPaddedSportCategories.length)];
   }
 //  public static String getPet() {
 //    Random randomGenerator = new Random();
@@ -192,25 +236,62 @@ public class ProductFactory {
     Random randomGenerator = new Random();
     return forPets[randomGenerator.nextInt(forPets.length)];
   }
-  public static String getTeamSportCategories() {
+
+  public static String getPet() {
     Random randomGenerator = new Random();
-    return teamSportCategories[randomGenerator.nextInt(teamSportCategories.length)];
+    return petDept[randomGenerator.nextInt(petDept.length)];
   }
-  public static String getSoloSportCategories() {
+  public static String getWeightliftingSport() {
     Random randomGenerator = new Random();
-    return soloSportCategories[randomGenerator.nextInt(soloSportCategories.length)];
+    return weightliftingSport[randomGenerator.nextInt(weightliftingSport.length)];
   }
-  public static String getClothing() {
+  private static String getPaddedSportCategories() {
     Random randomGenerator = new Random();
-    return clothing[randomGenerator.nextInt(clothing.length)];
+    return paddedSportCategories[randomGenerator.nextInt(paddedSportCategories.length)];
   }
-  public static String getAccessories() {
+  public static String getRunningSport() {
     Random randomGenerator = new Random();
-    return accessories[randomGenerator.nextInt(accessories.length)];
+    return runningSport[randomGenerator.nextInt(runningSport.length)];
   }
-  public static String getOutdoorWear() {
+  public static String getFootSports() {
     Random randomGenerator = new Random();
-    return outdoorWear[randomGenerator.nextInt(outdoorWear.length)];
+    return footSports[randomGenerator.nextInt(footSports.length)];
+  }
+  public static String getHandSports() {
+    Random randomGenerator = new Random();
+    return handSports[randomGenerator.nextInt(handSports.length)];
+  }
+  public static String getWater() {
+    Random randomGenerator = new Random();
+    return water[randomGenerator.nextInt(water.length)];
+  }
+  public static String getContactApparel() {
+    Random randomGenerator = new Random();
+    return contactApparel[randomGenerator.nextInt(contactApparel.length)];
+  }
+  public static String getSoloApparel() {
+    Random randomGenerator = new Random();
+    return soloApparel[randomGenerator.nextInt(soloApparel.length)];
+  }
+  public static String getWeightliftingApparel() {
+    Random randomGenerator = new Random();
+    return weightliftingApparel[randomGenerator.nextInt(weightliftingApparel.length)];
+  }
+  public static String getRunningApparel() {
+    Random randomGenerator = new Random();
+    return runningApparel[randomGenerator.nextInt(runningApparel.length)];
+  }
+  public static String getBasketballApparel() {
+    Random randomGenerator = new Random();
+    return basketballApparel[randomGenerator.nextInt(basketballApparel.length)];
+  }
+  public static String getSoccerApparel() {
+    Random randomGenerator = new Random();
+    return soccerApparel[randomGenerator.nextInt(soccerApparel.length)];
+  }
+  public static String getSwimWear() {
+    Random randomGenerator = new Random();
+    return swimWear[randomGenerator.nextInt(swimWear.length)];
   }
   /**
    * Generates a random product offering id.
@@ -287,60 +368,71 @@ public class ProductFactory {
     String type = ProductFactory.getTypes();
     String name = ProductFactory.getNames();
     String breed = ProductFactory.getBreed();
-    String teamSport = ProductFactory.getTeamSportCategories();
-    String soloSport = ProductFactory.getSoloSportCategories();
-    String recreate = ProductFactory.getRecreation();
-    String cloths = ProductFactory.getClothing();
-    String accessory = ProductFactory.getAccessories();
-    String outdoor = ProductFactory.getOutdoorWear();
+    String petCatagory = ProductFactory.getPet();
+    String running = ProductFactory.getRunningSport();
+    String nonPadded = ProductFactory.getNonPaddedSportCategories();
+    String padded = ProductFactory.getPaddedSportCategories();
+    String weight = ProductFactory.getWeightliftingSport();
+    String foot = ProductFactory.getFootSports();
+    String hand = ProductFactory.getHandSports();
+    String swim = ProductFactory.getWater();
     String pet = ProductFactory.getForPets();
+    String runningGear = ProductFactory.getRunningApparel();
+    String weightGear = ProductFactory.getWeightliftingApparel();
+    String pads = ProductFactory.getContactApparel();
+    String noPads = ProductFactory.getSoloApparel();
+    String soccer = ProductFactory.getSoccerApparel();
+    String basketball = ProductFactory.getBasketballApparel();
+    String swimming = ProductFactory.getSwimWear();
 //    product.setCategory("Running");
 //    product.setType("Short");
     product.setName(name);
-    if (demographic != "Pets") {
-      if(filterProduct(category, teamSportCategories)) {
-        product.setCategory(teamSport);
-        product.setType(cloths);
-        product.setDemographic(demographic);
-        product.setDescription(description);
-        product.setGlobalProductCode(ProductFactory.getRandomProductId());
-        product.setStyleNumber(ProductFactory.getStyleCode());
-      }
-      if (filterProduct(category, soloSportCategories)) {
-        if(oddOrEven()%2 != 0) {
-          product.setType(cloths);
-        } else {
-          product.setType(accessory);
-        }
-        product.setCategory(soloSport);
-        product.setDemographic(demographic);
-        product.setDescription(description);
-        product.setGlobalProductCode(ProductFactory.getRandomProductId());
-        product.setStyleNumber(ProductFactory.getStyleCode());
-      }
-      if (filterProduct(category, recreation)) {
-        product.setCategory(recreate);
-        product.setType(outdoor);
-        product.setDemographic(demographic);
-        product.setDescription(description);
-        product.setGlobalProductCode(ProductFactory.getRandomProductId());
-        product.setStyleNumber(ProductFactory.getStyleCode());
-      }
-    }else{
-      product.setDemographic(demographic);
-      product.setCategory("Pet");
-      product.setType(pet);
-      product.setDescription(description);
-      product.setGlobalProductCode(ProductFactory.getRandomProductId());
-      product.setStyleNumber(ProductFactory.getStyleCode());
-    }
-//    product.setType(type);
-//    product.setCategory(category);
-//    product.setDemographic(demographic);
-//    product.setDescription(description);
-//    product.setGlobalProductCode(ProductFactory.getRandomProductId());
-//    product.setStyleNumber(ProductFactory.getStyleCode());
+    product.setType(type);
+    product.setCategory(category);
+    product.setDemographic(demographic);
+    product.setDescription(description);
+    product.setGlobalProductCode(ProductFactory.getRandomProductId());
+    product.setStyleNumber(ProductFactory.getStyleCode());
 //    product.setBreed(breed);
+    if (demographic != "Pets") {
+      if(filterProduct(category, nonPaddedSportCategories)) {
+        product.setCategory(nonPadded);
+        product.setType(noPads);
+      }
+      if (filterProduct(category, paddedSportCategories)) {
+        product.setCategory(padded);
+        product.setType(pads);
+      }
+      if (filterProduct(category, runningSport)) {
+        product.setCategory(running);
+        product.setType(runningGear);
+      }
+      if (filterProduct(category, weightliftingSport)) {
+        product.setCategory(weight);
+        product.setType(weightGear);
+      }
+      if (filterProduct(category, footSports)) {
+        product.setCategory(foot);
+        product.setType(soccer);
+      }
+      if (filterProduct(category, handSports)) {
+        product.setCategory(hand);
+        product.setType(basketball);
+      }
+      if (filterProduct(category, water)) {
+        product.setCategory(swim);
+        product.setType(swimming);
+      }
+    }
+    if (product.getDemographic().equals("Pets")){
+      product.setCategory(petCatagory);
+      product.setType(pet);
+    }
+    if (filterProduct(category, petDept)){
+      product.setDemographic("Pets");
+      product.setCategory(petCatagory);
+      product.setType(pet);
+    }
 
     return product;
   }
