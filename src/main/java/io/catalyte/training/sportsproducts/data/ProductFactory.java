@@ -345,56 +345,68 @@ public class ProductFactory {
 
     return productList;
   }
-
+  /**
+   * filters contents of String array based on a String
+   * using to organize category for appropriate type for createRandomProduct()
+   * @param a - the term to filter by
+   * @param b - the array being filtered
+   */
+  Boolean filterProduct(String a, String[] b) {
+    Predicate<String> isA = Predicate.isEqual(a);
+    Boolean isMatch = Arrays.stream(b).anyMatch(isA);
+    return isMatch;
+  }
+  /**
+   * inserts image based on a String
+   * using to provide images for createRandomProduct()
+   * @param category - the term used to provide correct image
+   * @return String url
+   */
+  String insertImage(String category) {
+    if (category == "Golf") {
+      return "https://s3.amazonaws.com/uploadedimages.demandmedia/v.jpg%2Fv.jpg&f=1&nofb=1&ipt=6526904391903c9a8f48020eaf5b4b69e7ca147ab3f6bd014192ffa8e78dce9c&ipo=images";
+    }
+    if (category == "Football") {
+      return "https://1.bp.blogspot.com/-0QPjXpuaaqc/T0Zxqgy01bI/AAAAAAAAAUI/wreslkQFE_A/s1600/American+Football+Wallpapers.jpg";
+    }
+    if (category == "Soccer") {
+      return "https://wallpapertag.com/wallpaper/full/7/b/4/824935-gorgerous-soccer-players-wallpapers-2000x1250-photo.jpg";
+    }
+    if (category == "Basketball") {
+      return "https://pixfeeds.com/images/basketball/1280-594909788-basketball-player-shooting-at-basket.jpg";
+    }
+    if (category == "Hockey") {
+      return "https://darkroom-cdn.s3.amazonaws.com/2014/02/USPW-2014-02-21T172254Z_1780392570_NOCID_RTRMADP_3_OLYMPICS-ICE.jpg";
+    }
+    if (category == "Running") {
+      return "https://static01.nyt.com/images/2016/12/14/well/move/14physed-running-photo/14physed-running-photo-facebookJumbo.jpg";
+    }
+    if (category == "Baseball") {
+      return "https://greggnixon.net/gallery/Youth%20Sports/Baseball/tyler1.jpg";
+    }
+    if (category == "Skateboarding") {
+      return "https://www.factinate.com/wp-content/uploads/2017/08/GettyImages-1015395376.jpg";
+    }
+    if (category == "Boxing") {
+      return "http://greensboroboxing.org/wp-content/uploads/2021/02/B32I6381_1.jpg";
+    }
+    if (category == "Weightlifting") {
+      return "https://simplygym.co.uk/wp-content/uploads/2018/06/AdobeStock_86572660-e1528100935530.jpeg";
+    }
+    if (category == "Swimming") {
+      return "https://images.thestar.com/777_xR_claRwOtCStiymyWZXQ50=/1200x798/smart/filters:cb(1513617764172)/https://www.thestar.com/content/dam/thestar/life/homes/diy/2016/07/29/how-to-use-pool-noodles-outside-of-the-water/pool-noodles-main.jpg";
+    }
+    if (category == "Pet") {
+      return "https://regencysurfaceclean.com/wp-content/uploads/2018/06/Header_Pets.jpg";
+    }
+    return "https://hesolutions.com.pk/wp-content/uploads/2019/01/picture-not-available.jpg";
+  }
   /**
    * Uses random generators to build a product.
    *
    * @return - a randomly generated product
    */
-  Boolean filterProduct(String a, String[] b) {
-   Predicate<String> isA = Predicate.isEqual(a);
-   Boolean isMatch = Arrays.stream(b).anyMatch(isA);
-   return isMatch;
-  }
-  String insertImage(String category) {
-   if (category == "Golf") {
-     return "https://s3.amazonaws.com/uploadedimages.demandmedia/v.jpg%2Fv.jpg&f=1&nofb=1&ipt=6526904391903c9a8f48020eaf5b4b69e7ca147ab3f6bd014192ffa8e78dce9c&ipo=images";
-   }
-   if (category == "Football") {
-     return "https://1.bp.blogspot.com/-0QPjXpuaaqc/T0Zxqgy01bI/AAAAAAAAAUI/wreslkQFE_A/s1600/American+Football+Wallpapers.jpg";
-   }
-   if (category == "Soccer") {
-     return "https://wallpapertag.com/wallpaper/full/7/b/4/824935-gorgerous-soccer-players-wallpapers-2000x1250-photo.jpg";
-   }
-   if (category == "Basketball") {
-     return "https://pixfeeds.com/images/basketball/1280-594909788-basketball-player-shooting-at-basket.jpg";
-   }
-   if (category == "Hockey") {
-     return "https://darkroom-cdn.s3.amazonaws.com/2014/02/USPW-2014-02-21T172254Z_1780392570_NOCID_RTRMADP_3_OLYMPICS-ICE.jpg";
-   }
-   if (category == "Running") {
-     return "https://static01.nyt.com/images/2016/12/14/well/move/14physed-running-photo/14physed-running-photo-facebookJumbo.jpg";
-   }
-   if (category == "Baseball") {
-     return "https://greggnixon.net/gallery/Youth%20Sports/Baseball/tyler1.jpg";
-   }
-   if (category == "Skateboarding") {
-     return "https://www.factinate.com/wp-content/uploads/2017/08/GettyImages-1015395376.jpg";
-   }
-   if (category == "Boxing") {
-     return "http://greensboroboxing.org/wp-content/uploads/2021/02/B32I6381_1.jpg";
-   }
-   if (category == "Weightlifting") {
-     return "https://simplygym.co.uk/wp-content/uploads/2018/06/AdobeStock_86572660-e1528100935530.jpeg";
-   }
-   if (category == "Swimming") {
-     return "https://images.thestar.com/777_xR_claRwOtCStiymyWZXQ50=/1200x798/smart/filters:cb(1513617764172)/https://www.thestar.com/content/dam/thestar/life/homes/diy/2016/07/29/how-to-use-pool-noodles-outside-of-the-water/pool-noodles-main.jpg";
-   }
-   if (category == "Pet") {
-     return "https://regencysurfaceclean.com/wp-content/uploads/2018/06/Header_Pets.jpg";
-   }
-   return "https://hesolutions.com.pk/wp-content/uploads/2019/01/picture-not-available.jpg";
-  }
+
   public Product createRandomProduct() {
     Product product = new Product();
     String demographic = ProductFactory.getDemographic();
@@ -430,6 +442,8 @@ public class ProductFactory {
     product.setStyleNumber(ProductFactory.getStyleCode());
     product.setImageUrl("https://hesolutions.com.pk/wp-content/uploads/2019/01/picture-not-available.jpg");
 //    product.setBreed(breed);
+
+    //conditions for mocking realistic products and separating pets from  humans
     if (demographic != "Pets") {
       if(filterProduct(category, nonPaddedSportCategories)) {
         String nonPaddedImg = insertImage(nonPadded);
