@@ -364,7 +364,7 @@ public class ProductFactory {
    */
   String insertImage(String category) {
     if (category == "Golf") {
-      return "https://s3.amazonaws.com/uploadedimages.demandmedia/v.jpg%2Fv.jpg&f=1&nofb=1&ipt=6526904391903c9a8f48020eaf5b4b69e7ca147ab3f6bd014192ffa8e78dce9c&ipo=images";
+      return "https://unicorncay.com/wp-content/uploads/2019/06/golf.jpg";
     }
     if (category == "Football") {
       return "https://1.bp.blogspot.com/-0QPjXpuaaqc/T0Zxqgy01bI/AAAAAAAAAUI/wreslkQFE_A/s1600/American+Football+Wallpapers.jpg";
