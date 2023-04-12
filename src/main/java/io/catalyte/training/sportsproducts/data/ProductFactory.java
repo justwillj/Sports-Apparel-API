@@ -391,7 +391,7 @@ public class ProductFactory {
      return "https://images.thestar.com/777_xR_claRwOtCStiymyWZXQ50=/1200x798/smart/filters:cb(1513617764172)/https://www.thestar.com/content/dam/thestar/life/homes/diy/2016/07/29/how-to-use-pool-noodles-outside-of-the-water/pool-noodles-main.jpg";
    }
    if (category == "Pet") {
-     return "https://images.thestar.com/777_xR_claRwOtCStiymyWZXQ50=/1200x798/smart/filters:cb(1513617764172)/https://www.thestar.com/content/dam/thestar/life/homes/diy/2016/07/29/how-to-use-pool-noodles-outside-of-the-water/pool-noodles-main.jpg";
+     return "https://regencysurfaceclean.com/wp-content/uploads/2018/06/Header_Pets.jpg";
    }
    return "https://hesolutions.com.pk/wp-content/uploads/2019/01/picture-not-available.jpg";
   }
