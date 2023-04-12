@@ -27,6 +27,8 @@ public class Product {
 
   private String breed;
 
+  private String imageUrl;
+
   private String releaseDate;
 
   private String primaryColorCode;
@@ -42,16 +44,27 @@ public class Product {
   public Product() {
   }
 
-  public Product(String name, String description,
-      String demographic, String category,
-      String type, String releaseDate) {
+  public Product(Long id, String name,
+                 String description, String demographic,
+                 String category, String type,
+                 String breed, String imageUrl,
+                 String releaseDate, String primaryColorCode,
+                 String secondaryColorCode, String styleNumber,
+                 String globalProductCode, Boolean active) {
+    this.id = id;
     this.name = name;
     this.description = description;
     this.demographic = demographic;
-    this.breed = breed;
     this.category = category;
     this.type = type;
+    this.breed = breed;
+    this.imageUrl = imageUrl;
     this.releaseDate = releaseDate;
+    this.primaryColorCode = primaryColorCode;
+    this.secondaryColorCode = secondaryColorCode;
+    this.styleNumber = styleNumber;
+    this.globalProductCode = globalProductCode;
+    this.active = active;
   }
 
   public Long getId() {
@@ -158,6 +171,14 @@ public class Product {
     this.breed = breed;
   }
 
+  public String getImageUrl() {
+    return imageUrl;
+  }
+
+  public void setImageUrl(String imageUrl) {
+    this.imageUrl = imageUrl;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -184,6 +205,9 @@ public class Product {
       return false;
     }
     if (type != null ? !type.equals(product.type) : product.type != null) {
+      return false;
+    }
+    if (imageUrl != null ? !imageUrl.equals(product.imageUrl) : product.imageUrl != null) {
       return false;
     }
     if (releaseDate != null ? !releaseDate.equals(product.releaseDate)
@@ -226,6 +250,7 @@ public class Product {
     result = 31 * result + (globalProductCode != null ? globalProductCode.hashCode() : 0);
     result = 31 * result + (active != null ? active.hashCode() : 0);
     result = 31 * result + (breed != null ? breed.hashCode() : 0);
+    result = 31 * result + (imageUrl != null ? imageUrl.hashCode() : 0);
     return result;
   }
 
@@ -239,6 +264,7 @@ public class Product {
             ", category='" + category + '\'' +
             ", type='" + type + '\'' +
             ", breed='" + breed + '\'' +
+            ", imageUrl='" + imageUrl + '\'' +
             ", releaseDate='" + releaseDate + '\'' +
             ", primaryColorCode='" + primaryColorCode + '\'' +
             ", secondaryColorCode='" + secondaryColorCode + '\'' +

@@ -356,9 +356,44 @@ public class ProductFactory {
    Boolean isMatch = Arrays.stream(b).anyMatch(isA);
    return isMatch;
   }
-  double oddOrEven() {
-    double isEven = Math.round(Math.random());
-    return isEven;
+  String insertImage(String category) {
+   if (category == "Golf") {
+     return "https://s3.amazonaws.com/uploadedimages.demandmedia/v.jpg%2Fv.jpg&f=1&nofb=1&ipt=6526904391903c9a8f48020eaf5b4b69e7ca147ab3f6bd014192ffa8e78dce9c&ipo=images";
+   }
+   if (category == "Football") {
+     return "https://1.bp.blogspot.com/-0QPjXpuaaqc/T0Zxqgy01bI/AAAAAAAAAUI/wreslkQFE_A/s1600/American+Football+Wallpapers.jpg";
+   }
+   if (category == "Soccer") {
+     return "https://wallpapertag.com/wallpaper/full/7/b/4/824935-gorgerous-soccer-players-wallpapers-2000x1250-photo.jpg";
+   }
+   if (category == "Basketball") {
+     return "https://pixfeeds.com/images/basketball/1280-594909788-basketball-player-shooting-at-basket.jpg";
+   }
+   if (category == "Hockey") {
+     return "https://darkroom-cdn.s3.amazonaws.com/2014/02/USPW-2014-02-21T172254Z_1780392570_NOCID_RTRMADP_3_OLYMPICS-ICE.jpg";
+   }
+   if (category == "Running") {
+     return "https://static01.nyt.com/images/2016/12/14/well/move/14physed-running-photo/14physed-running-photo-facebookJumbo.jpg";
+   }
+   if (category == "Baseball") {
+     return "https://greggnixon.net/gallery/Youth%20Sports/Baseball/tyler1.jpg";
+   }
+   if (category == "Skateboarding") {
+     return "https://www.factinate.com/wp-content/uploads/2017/08/GettyImages-1015395376.jpg";
+   }
+   if (category == "Boxing") {
+     return "http://greensboroboxing.org/wp-content/uploads/2021/02/B32I6381_1.jpg";
+   }
+   if (category == "Weightlifting") {
+     return "https://simplygym.co.uk/wp-content/uploads/2018/06/AdobeStock_86572660-e1528100935530.jpeg";
+   }
+   if (category == "Swimming") {
+     return "https://images.thestar.com/777_xR_claRwOtCStiymyWZXQ50=/1200x798/smart/filters:cb(1513617764172)/https://www.thestar.com/content/dam/thestar/life/homes/diy/2016/07/29/how-to-use-pool-noodles-outside-of-the-water/pool-noodles-main.jpg";
+   }
+   if (category == "Pet") {
+     return "https://images.thestar.com/777_xR_claRwOtCStiymyWZXQ50=/1200x798/smart/filters:cb(1513617764172)/https://www.thestar.com/content/dam/thestar/life/homes/diy/2016/07/29/how-to-use-pool-noodles-outside-of-the-water/pool-noodles-main.jpg";
+   }
+   return "https://hesolutions.com.pk/wp-content/uploads/2019/01/picture-not-available.jpg";
   }
   public Product createRandomProduct() {
     Product product = new Product();
@@ -393,45 +428,55 @@ public class ProductFactory {
     product.setDescription(description);
     product.setGlobalProductCode(ProductFactory.getRandomProductId());
     product.setStyleNumber(ProductFactory.getStyleCode());
+    product.setImageUrl("https://hesolutions.com.pk/wp-content/uploads/2019/01/picture-not-available.jpg");
 //    product.setBreed(breed);
     if (demographic != "Pets") {
       if(filterProduct(category, nonPaddedSportCategories)) {
         product.setCategory(nonPadded);
         product.setType(noPads);
+        product.setImageUrl(insertImage(nonPadded));
       }
       if (filterProduct(category, paddedSportCategories)) {
         product.setCategory(padded);
         product.setType(pads);
+        product.setImageUrl(padded);
       }
       if (filterProduct(category, runningSport)) {
         product.setCategory(running);
         product.setType(runningGear);
+        product.setImageUrl(running);
       }
       if (filterProduct(category, weightliftingSport)) {
         product.setCategory(weight);
         product.setType(weightGear);
+        product.setImageUrl(weight);
       }
       if (filterProduct(category, footSports)) {
         product.setCategory(foot);
         product.setType(soccer);
+        product.setImageUrl(foot);
       }
       if (filterProduct(category, handSports)) {
         product.setCategory(hand);
         product.setType(basketball);
+        product.setImageUrl(hand);
       }
       if (filterProduct(category, water)) {
         product.setCategory(swim);
         product.setType(swimming);
+        product.setImageUrl(swim);
       }
     }
     if (product.getDemographic().equals("Pets")){
       product.setCategory(petCatagory);
       product.setType(pet);
+      product.setImageUrl(petCatagory);
     }
     if (filterProduct(category, petDept)){
       product.setDemographic("Pets");
       product.setCategory(petCatagory);
       product.setType(pet);
+      product.setImageUrl(petCatagory);
     }
 
     return product;
