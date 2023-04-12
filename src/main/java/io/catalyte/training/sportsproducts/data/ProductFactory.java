@@ -432,51 +432,60 @@ public class ProductFactory {
 //    product.setBreed(breed);
     if (demographic != "Pets") {
       if(filterProduct(category, nonPaddedSportCategories)) {
+        String nonPaddedImg = insertImage(nonPadded);
         product.setCategory(nonPadded);
         product.setType(noPads);
-        product.setImageUrl(insertImage(nonPadded));
+        product.setImageUrl(nonPaddedImg);
       }
       if (filterProduct(category, paddedSportCategories)) {
+        String paddedImg = insertImage(padded);
         product.setCategory(padded);
         product.setType(pads);
-        product.setImageUrl(padded);
+        product.setImageUrl(paddedImg);
       }
       if (filterProduct(category, runningSport)) {
+        String runningImg = insertImage(running);
         product.setCategory(running);
         product.setType(runningGear);
-        product.setImageUrl(running);
+        product.setImageUrl(runningImg);
       }
       if (filterProduct(category, weightliftingSport)) {
+        String weightliftingImg = insertImage(weight);
         product.setCategory(weight);
         product.setType(weightGear);
-        product.setImageUrl(weight);
+        product.setImageUrl(weightliftingImg);
       }
       if (filterProduct(category, footSports)) {
+        String footSportsImg = insertImage(foot);
         product.setCategory(foot);
         product.setType(soccer);
-        product.setImageUrl(foot);
+        product.setImageUrl(footSportsImg);
       }
       if (filterProduct(category, handSports)) {
+        String handSportsImg = insertImage(hand);
         product.setCategory(hand);
         product.setType(basketball);
-        product.setImageUrl(hand);
+        product.setImageUrl(handSportsImg);
       }
       if (filterProduct(category, water)) {
+        String waterImg = insertImage(swim);
         product.setCategory(swim);
         product.setType(swimming);
-        product.setImageUrl(swim);
+        product.setImageUrl(waterImg);
       }
     }
     if (product.getDemographic().equals("Pets")){
+      String petsImg = insertImage(petCatagory);
       product.setCategory(petCatagory);
       product.setType(pet);
-      product.setImageUrl(petCatagory);
+      product.setImageUrl(petsImg);
     }
     if (filterProduct(category, petDept)){
+      String petsImg = insertImage(petCatagory);
       product.setDemographic("Pets");
       product.setCategory(petCatagory);
       product.setType(pet);
-      product.setImageUrl(petCatagory);
+      product.setImageUrl(petsImg);
     }
 
     return product;
