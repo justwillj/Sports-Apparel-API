@@ -196,10 +196,12 @@ public class ProductFactory {
     String category = ProductFactory.getCategories();
     String type = ProductFactory.getTypes();
     String name = ProductFactory.getNames();
+    String breed = ProductFactory.getBreed();
 //    product.setCategory("Running");
 //    product.setType("Short");
 
     product.setName(name);
+    product.setBreed(breed);
     product.setType(type);
     product.setCategory(category);
     product.setDemographic(demographic);
