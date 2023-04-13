@@ -59,7 +59,9 @@ public class ProductFactory {
       "Boxing",
       "Weightlifting",
       "Swimming",
-      "Pet"
+      "Dog",
+      "Cat",
+      "Other"
   };
   private  static  final String[] nonPaddedSportCategories = {
       "Golf",
@@ -89,7 +91,9 @@ public class ProductFactory {
       "Swimming"
   };
   private static final String[] petDept = {
-          "Pet"
+          "Dog",
+          "Cat",
+          "Other"
   };
   private static final String[] adjectives = {
       "Lightweight",
@@ -126,8 +130,9 @@ public class ProductFactory {
       "Hoodie",
       "Flip Flop",
       "Pool Noodle",
-      "Squeak-toy",
-      "Bed"
+      "Toy",
+      "Bed",
+      "Treats"
   };
   private static final String[] contactApparel = {
           "Pant",
@@ -184,8 +189,9 @@ public class ProductFactory {
           "Pool Noodle"
   };
   private static final String[] forPets = {
-          "Squeak-toy",
-          "Bed"
+          "Toy",
+          "Bed",
+          "Treats"
   };
   private static final String[] breed = {
       "Dog",
