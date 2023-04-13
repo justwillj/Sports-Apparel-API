@@ -41,7 +41,8 @@ public class UserController {
     return new ResponseEntity<>(userService.createUser(user), HttpStatus.CREATED);
   }
 
-  /**
+  /**u;'
+   *
    * Controller method for updating the user
    *
    * @param id          Id of the user to update
