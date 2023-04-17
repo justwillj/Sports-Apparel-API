@@ -59,7 +59,9 @@ public class ProductFactory {
       "Boxing",
       "Weightlifting",
       "Swimming",
-      "Pet"
+      "Dog",
+      "Cat",
+      "Other"
   };
   private  static  final String[] nonPaddedSportCategories = {
       "Golf",
@@ -89,7 +91,9 @@ public class ProductFactory {
       "Swimming"
   };
   private static final String[] petDept = {
-          "Pet"
+          "Dog",
+          "Cat",
+          "Other"
   };
   private static final String[] adjectives = {
       "Lightweight",
@@ -126,8 +130,9 @@ public class ProductFactory {
       "Hoodie",
       "Flip Flop",
       "Pool Noodle",
-      "Squeak-toy",
-      "Bed"
+      "Toy",
+      "Bed",
+      "Treats"
   };
   private static final String[] contactApparel = {
           "Pant",
@@ -184,8 +189,9 @@ public class ProductFactory {
           "Pool Noodle"
   };
   private static final String[] forPets = {
-          "Squeak-toy",
-          "Bed"
+          "Toy",
+          "Bed",
+          "Treats"
   };
   private static final String[] breed = {
       "Dog",
@@ -396,7 +402,13 @@ public class ProductFactory {
     if (category == "Swimming") {
       return "https://images.thestar.com/777_xR_claRwOtCStiymyWZXQ50=/1200x798/smart/filters:cb(1513617764172)/https://www.thestar.com/content/dam/thestar/life/homes/diy/2016/07/29/how-to-use-pool-noodles-outside-of-the-water/pool-noodles-main.jpg";
     }
-    if (category == "Pet") {
+    if (category == "Dog") {
+      return "https://regencysurfaceclean.com/wp-content/uploads/2018/06/Header_Pets.jpg";
+    }
+    if (category == "Cat") {
+      return "https://regencysurfaceclean.com/wp-content/uploads/2018/06/Header_Pets.jpg";
+    }
+    if (category == "Other") {
       return "https://regencysurfaceclean.com/wp-content/uploads/2018/06/Header_Pets.jpg";
     }
     return "https://hesolutions.com.pk/wp-content/uploads/2019/01/picture-not-available.jpg";
